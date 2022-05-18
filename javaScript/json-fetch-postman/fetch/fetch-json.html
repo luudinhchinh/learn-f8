@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="root">
+
+    </ul>
+    <script>
+        var post = "https://jsonplaceholder.typicode.com/posts"
+        fetch(post)
+          .then(function(comment){
+              return comment.json();
+          })
+          .then(function(comments){
+              let pos = comments.map(function(com){
+                  return `<h2>${com.title}</h2>
+                          <p>${com.body}</p>`
+              })
+              let html = pos.join("")
+              document.getElementById("root").innerHTML=html
+          })
+    </script>
+</body>
+</html>

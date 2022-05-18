@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="comment-box"></ul>
+    <script>
+        var users = [{
+                name: "trong quy",
+                id: 1
+            },
+            {
+                name: "cong tinh",
+                id: 2
+            },
+            {
+                name: "trong nhan",
+                id: 3
+            },
+        ];
+        var comments = [{
+                id: 1,
+                user_Id: 1,
+                comment: "how are you ?"
+            },
+            {
+                id: 2,
+                user_Id: 2,
+                comment: "i am fine"
+            },
+        ];
+        // việc 3 lấy giá trị của biến userIds bên dưới để nạp vào getUserByIds để lọc ra các user thỏa điều kiện
+        function getUserByIds(userIds) {
+            return new Promise(function (resolve) {
+                var result = users.filter(function (user) {
+                    // lọc ra các user từ mảng User dựa theo điều kiện bên dưới và lưu vào biến result
+                    return userIds.includes(user
+                    .id); //điều kiện lọc id = userIds= true(lấy),id khác userIds = flase(loại)
+                });
+                setTimeout(function () {
+                    resolve(result);
+                }, 1000);
+            });
+        }
+        //
+        // việc 1 tạo hạm để lấy user_ID  trong mảng comments[] để chọc lên mảng users[]
+        function getComments() {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    resolve(comments);
+                }, 1000);
+            });
+        }
+        //
+        //khối thực thi-gọi hàm chạy theo kịch bản: khôi code dưới này mang ý nghĩa gọi hàm đã tạo sẵn ở trên để thực thi các đầu việc ở trên theo thứ tự và trả về một giá trị tổng là data
+        //tìm được data là đã hết ý chính của bài,còn phần sau in ra giao diện các giá trị đều được lấy ra từ data
+        getComments()
+            .then(function (comments) {
+                var userIds = comments.map(function (comment) {
+                    return comment.user_Id;
+                });
+                // việc 2 Đã lấy được user_Id lưu vào biến userIds
+                return getUserByIds(userIds).then(function (users) {
+                    //lưu ý  then(function (users) ở đây là của Promise getUserByIds(userIds)
+                    //khi một promise.then() return ra một promise con.thì .then()tiếp theo sẽ là .then()của promise con
+                    return {
+                        users: users,
+                        comment: comments,
+                    };
+                });
+                //việc 4 tổng hợp các user và comment của các user này lưu vào tham số data
+            })
+            .then(function (data) {
+                console.log(data);
+            });
+        // hết khối thực thi
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+        3. render ui
+        react-native ->
+        <div class="post-item">
+            <h2 title="học react tại f8">học react</h2>
+            <p>học react từ cơ bản tới nâng cao</p>
+          </div>
+          bt
+          5. tạo:
+          <h1 title="hello" class="heading">hello guys</h1>
+        6. tạo: 
+          <ul>
+            <li>javascript</li>
+            <li>reactJS</li>
+          </ul>
+    -->
+    <div id="root"></div>
+    <script>
+        // react
+        const postItem = React.createElement("div", {}, React.createElement("h2", {
+            title: "học react tại f8"
+        }, "học react"), React.createElement("p", {}, "hcj react từ cơ bản đến nâng cao"))
+        // get root element
+        const rootDom = document.getElementById("root");
+        // react-dom render-ui
+
+
+        //ReactDOM.render(postItem,rootDom) // react  phiên bản 17 @@ 17
+
+       // react phiên bản 18
+       const root = ReactDOM.createRoot(rootDom);
+       root.render(postItem)
+    </script>
+</body>
+
+</html>

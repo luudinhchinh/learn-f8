@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+        * lỗi thường gặp
+        1. dùng code thuần dùng map phải join()..
+        2. lỗi khi render từ mảng ((prop "key"))
+        3. không render được 2 element cùng một lúc -> dùng React.fragment
+
+    -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const courses = [
+            {
+                name: 'html, css'
+            },
+            {
+                name: 'responsive web desight'
+            },
+            {
+                name: 'ReactJS'
+            }
+        ];
+       const ulReact = (
+           <ul>{courses.map(function(couse){
+               <li>{couse.name}</li>
+           })}</ul>
+       )
+        ReactDOM.render(ulReact,document.getElementById("root"))
+    </script>
+</body>
+
+</html>

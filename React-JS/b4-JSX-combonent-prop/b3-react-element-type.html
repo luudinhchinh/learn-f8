@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+        *hooks
+        1. react element types: string, function/class
+          -wrapper
+             - header -> header component
+             - content -> content component
+             - footer -> footer combonent
+        2. biểu diễn đơn giản với JSX
+    -->
+
+    <div id="app"></div>
+    <script type="text/babel">
+        // 1. component function
+        function Header(){
+            return ( <div className="header">header</div>)
+        }
+        function Content(){
+            return <div className="content">content</div>
+        }
+        // 1. component class
+        class Footer extends React.Component{
+            render(){
+                return <div className="footer">footer</div>
+            }
+        }
+        const app = (
+            <div className="wrapper">
+               <Header />
+               <Content />
+                <Footer />
+                
+            </div>
+        )
+        ReactDOM.render(app,document.getElementById("app"))
+        // bài tập
+        const ap = (
+            <div className="posts-list">
+                <PostItem />
+                <PostItem />
+                
+            </div>
+        )
+        // function component
+        function PostItem(){
+            return (
+                <div className="post-item">
+                    <img src="https://files.fullstack.edu.vn/f8-prod/blog_posts/677/615424715714d.png" alt=""/>
+                    <h2>Cách đưa code lên GitHub và tạo GitHub Pages</h2>
+                    <p>Xin các bạn tại F8, khi mình đọc những bài viết trên nhóm F8 thì mình thấy có nhiều bạn vẫn không biết đưa code lên GitHub,</p>
+                    <p>hoặc bị lỗi, hoặc có thể là những bạn mới và đặc biệt là các bạn không biết tạo GitHub Pages ( cụ thể là hiển thị ra trang web để cho mọi người xem á! ).</p>
+                </div>
+            )
+        }
+        ReactDOM.render(ap, document.getElementById("app"));
+    </script>
+</body>
+</html>
