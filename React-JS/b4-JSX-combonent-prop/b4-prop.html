@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <!--
+        *prop
+        -react element
+           - sử dụng prop giống như với attribute của thẻ html
+           - 2 prop class, for => className, htmlFor
+           - phải tuân theo quy ước có sẵn
+        -react components
+           - sử dụng prop giống như đối số component(function)
+           - tự do đặt tên prop
+             - đặt theo camelcase
+             - có thể bao gầm dấu gạch ngang
+        - chú ý:
+           - prop "key" là prop đặt biệt
+           - prop cơ bản là đối số của component
+              => prop là có thể bất cứ kiểu dữ liệu gì
+            - sử dụng destructuring
+    -->
+  <div id="root"></div>
+  <script type="text/babel">
+    function PostItem(prop){
+            return (
+                <div className="post-item">
+                    <img src= {prop.img} alt=""/>
+                    <h2>{prop.title}</h2>
+                    <p>{prop.decription}</p>
+                    <p>{prop.decriptionA}</p>
+                </div>
+            )
+        }
+        function App(){
+            return (
+                <div className="wrapper">
+                    <PostItem     
+                    img="https://files.fullstack.edu.vn/f8-prod/blog_posts/677/615424715714d.png"
+                    title="Cách đưa code lên GitHub và tạo GitHub Pages"
+                    decription="Xin các bạn tại F8, khi mình đọc những bài viết trên nhóm F8 thì mình thấy có nhiều bạn vẫn không biết đưa code lên GitHub"
+                    decriptionA="hoặc bị lỗi, hoặc có thể là những bạn mới và đặc biệt là các bạn không biết tạo GitHub Pages ( cụ thể là hiển thị ra trang web để cho mọi người xem á! )"
+                 />
+                 <PostItem     
+                    img="https://files.fullstack.edu.vn/f8-prod/blog_posts/677/615424715714d.png"
+                    title="2Cách đưa code lên GitHub và tạo GitHub Pages"
+                    decription="2Xin các bạn tại F8, khi mình đọc những bài viết trên nhóm F8 thì mình thấy có nhiều bạn vẫn không biết đưa code lên GitHub"
+                    decriptionA="2hoặc bị lỗi, hoặc có thể là những bạn mới và đặc biệt là các bạn không biết tạo GitHub Pages ( cụ thể là hiển thị ra trang web để cho mọi người xem á! )"
+                 />
+                 <PostItem     
+                    img="https://files.fullstack.edu.vn/f8-prod/blog_posts/677/615424715714d.png"
+                    title="3Cách đưa code lên GitHub và tạo GitHub Pages"
+                    decription="3Xin các bạn tại F8, khi mình đọc những bài viết trên nhóm F8 thì mình thấy có nhiều bạn vẫn không biết đưa code lên GitHub"
+                    decriptionA="3hoặc bị lỗi, hoặc có thể là những bạn mới và đặc biệt là các bạn không biết tạo GitHub Pages ( cụ thể là hiển thị ra trang web để cho mọi người xem á! )"
+                 />
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,document.getElementById("root"))
+        // phần bài tập 
+        const users = [
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "address": {
+      "street": "Victor Plains",
+      "suite": "Suite 879",
+      "city": "Wisokyburgh",
+      "zipcode": "90566-7771",
+      "geo": {
+        "lat": "-43.9509",
+        "lng": "-34.4618"
+      }
+    },
+    "phone": "010-692-6593 x09125",
+    "website": "anastasia.net",
+    "company": {
+      "name": "Deckow-Crist",
+      "catchPhrase": "Proactive didactic contingency",
+      "bs": "synergize scalable supply-chains"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Clementine Bauch",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net",
+    "address": {
+      "street": "Douglas Extension",
+      "suite": "Suite 847",
+      "city": "McKenziehaven",
+      "zipcode": "59590-4157",
+      "geo": {
+        "lat": "-68.6102",
+        "lng": "-47.0653"
+      }
+    }}]
+    // function component
+    // task render ra 4 cái
+    
+    function UserItem(){
+     return (
+         <div>{
+            users.map(function(e){
+                return (
+                    <ul>
+                        <li >{e.id}</li>
+                        <li >{e.name}</li>
+                        <li>{e.username}</li>
+                        <li >{e.email}</li>
+                    </ul>
+                )
+            })
+        }</div>
+     )
+    }
+    // app
+    function AppItem(){
+        return (
+            <div className="wrapper">
+                <UserItem 
+                   
+                />
+            </div>
+        )
+    }
+    // bt cách 2
+    const CourItem = ({user})=>{
+      <div>
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+        <p>{user.adress}</p>
+        </div>
+    }
+    function Apppp(){
+      return(
+        <div>
+          {
+            users.map(function(user){
+              <CourItem 
+                key={user.id}
+                user={user}
+          />
+            })
+          }
+          </div>
+      )
+    }
+    ReactDOM.render(<Apppp/>, document.getElementById("root"))
+    </script>
+</body>
+
+</html>
