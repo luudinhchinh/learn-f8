@@ -32,7 +32,7 @@
     <div id="roor"></div>
     <script type="text/babel">
         // bài tập
-        const users = [
+     /*   const users = [
   {
     "id": 1,
     "name": "Leanne Graham",
@@ -94,16 +94,19 @@
         "lng": "-47.0653"
       }
     }}]
-    function ClickItem({app}){
+    function ClickItem({app,onClick}){
         return(
             <div>
                 <h2>{app.id}</h2>
-                <h2 onClick={alert(app.name)}>{app.name}</h2>
+                <h2 onClick={()=>onclick(app)}>{app.name}</h2>
                 <p>{app.email}</p>
             </div>
         )
     }
     function App(){
+      const handleClick = ()=>{
+
+      }
         return (
             <div>
                 {
@@ -112,6 +115,7 @@
                              id={e.id}
                              name={e.name}
                              email={e.email}
+                             onClick={handleClick}
                            />
                        
                    })
@@ -125,8 +129,35 @@
          name = {e.name}
          email = {e.email}
          />
-    })
-    ReactDOM.render(app,document.getElementById("root"))
+    })*/
+    function Button({title,href, onClick}){
+      let Component = "button"
+      const prop = {}
+        if(onClick){
+          prop.onClick=href
+        }
+        if(href){
+          Component="a"
+          prop.href=href
+        }
+
+      return (
+        <Component {...prop} />
+      )
+    }
+    function App(){
+     
+      return (
+        <div id="wrapper"> 
+          <Button 
+          title = "click me"
+          href = "https://fullstack.edu.vn/learning/reactjs?id=f106ce66-7cfa-4963-94ad-81e96945a576"
+          onClick = {()=> console.log(Math.random())}
+          />
+       </div>
+      )
+    }
+    ReactDOM.render(<App/>,document.getElementById("root"))
     </script>
 </body>
 </html>

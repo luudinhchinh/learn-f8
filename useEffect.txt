@@ -1,0 +1,21 @@
+### useEffect 
+--> sử dụng khi muốn thực hiện các (side effect)-> chỉ tới chương trình phần mềm khi có tác động sảy ra thì chương trình thay đổi
+(
+    .events: add/remote event listener
+    .observer pattern: subscrice/unsubscrice
+    .closure
+    .timer: setinterval, settimeout, clearinterval, cleartimeout
+    .useState
+    .mount/unmount
+
+    .call api
+)
+
+1. update dom ->f8 blog title
+2. call api
+3. listen dom event
+   .scroll
+   .resize
+4. clearnup
+   .remotelistener / unsubscrice
+   .clear timer
