@@ -1,0 +1,44 @@
+* hook
+1 chỉ dùng cho function component
+2 component đơn giản và trở nên dể hiểu
+  .không bị chia logic ra như method trong lifecycle của class component
+  .không cần sử dụng this
+3 sử dụng hook khi nào 
+  .dự án mới => hook
+  .dự án cũ
+    .component mới => function component + hook
+    .component cũ giứ nguyên có thời gian tối ưu sau
+  .logic nghiệp vụ cần sử dụng tính chất oop => dùng class component
+
+4 người mới nên bắt đầu với function component hay class component
+
+5 có kết hợp sử dụng function component và class component được không => được
+
+
+### useState hook
+
+## dùng khi nào
+ khi muốn dữ liệu thay đổi thì giao diện tự động được cập nhật (render lại theo dữ liệu)
+
+## cách dùng 
+ jsx
+   import {useState} from 'react'
+   function Component(){
+    const [state,setState]= useState(initState)
+   }
+## lưu ý
+.component được re render sau khi dùng 'setstate'
+.initState chỉ dùng cho lần đầu
+.setState với callback
+.initState với callback
+.setState thay thế state bằng giá trị mới
+
+## {array reference type}
+..ví dụ
+ random gift
+ two way binding // ràng buộc 2 chiều
+ todolist
+
+
+
+ ### mounted(lắp vào)/ unmounted (gỡ ra)

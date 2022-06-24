@@ -1,5 +1,6 @@
 
-import {useState} from 'react'
+import { useState } from 'react'
+import './App.css'
 
 // function App() {
 //   const [count,setCount]=useState(1)
@@ -23,7 +24,7 @@ import {useState} from 'react'
 // trường hợp phức tạp hơn
 // const array = [200,300,400]
 // function App() {
-  
+
 //   const [count,setCount]=useState(()=>{
 //     const total = array.reduce((a,b)=>{
 //       return a+b
@@ -32,7 +33,7 @@ import {useState} from 'react'
 //   })
 //   const handleClick = ()=>{
 //        setCount(count+1)
-      
+
 //     }
 //   return (
 //     <div className="App" style={{padding:20}}>
@@ -48,7 +49,7 @@ import {useState} from 'react'
 //   const [name,setName] = useState()
 //   const randomGift = ()=>{
 //       const index = Math.floor(Math.random()*gift.length)
-     
+
 //       setName(gift[index])
 //   }
 //   return (
@@ -64,9 +65,9 @@ import {useState} from 'react'
 //   const [name,setName]=useState('')
 //   const [email,setEmail]=useState('')
 //  const handleClick=()=>{
-   
+
 //     }
-  
+
 //   return (
 //     <div>
 //       <input
@@ -79,7 +80,7 @@ import {useState} from 'react'
 //       onChange={(e)=>{
 //         setEmail(e.target.value)
 //       }} />
-      
+
 //       <button onClick={handleClick}>register</button>
 //     </div>
 //   )
@@ -87,34 +88,35 @@ import {useState} from 'react'
 
 // bt todolist
 
-function App(){
-  
-  const [job,setJob]=useState("")
-  const [jobs, setJobs]=useState(()=>{
+function App() {
+
+  const [job, setJob] = useState("")
+  const [jobs, setJobs] = useState(() => {
     const storagejob = JSON.parse(localStorage.getItem('jobs'))
     return storagejob
   })
-  const handleAdd=()=>{
-    setJobs(prev=>{
-      const newjob = [...prev,job]
+  const handleAdd = () => {
+    setJobs(prev => {
+      const newjob = [...prev, job]
       const jsonjob = JSON.stringify(newjob)
-      localStorage.setItem("jobs",jsonjob)
+      localStorage.setItem("jobs", jsonjob)
       return newjob
     })
     setJob('')
   }
-  return(
-    <div style={{padding:20}}>
-      <input value={job} onChange={e=>{
+  return (
+    <div style={{ padding: 20 }}>
+      <input value={job} onChange={e => {
         setJob(e.target.value)
       }} />
       <button onClick={handleAdd}>add</button>
-
       <ul>
-        {jobs.map((job,index)=>(
-          <li key={index}>{job}</li>
+        {jobs.map((job, index) => (
+          
+          <li key={index} >{job}</li>
+         
         ))}
-        
+
       </ul>
     </div>
   )
