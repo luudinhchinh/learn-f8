@@ -1,11 +1,9 @@
-
-import './App.css';
 import Content from './Content';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <button>toggle</button>
       <Content />
     </div>
   );

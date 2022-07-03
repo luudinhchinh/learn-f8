@@ -12,6 +12,11 @@ import {useEffect,useState} from "react"
 // clearn up function lun được gọi trước khi component unmount
 // clearn up function luôn được gọi trước khi callback được gọi (trừ lần mount)
 
+// sử dụng dependencies khi nào
+// có nên viết nhiều logic khác nhau trong 1 useEffect
+// phân biệt cchs truyền callback qua props
+// khi setstate cùng 1 giá trị thì component sẽ ko re-render
+
 // function Content(){      //1
 //     const [title,setTitle]=useState("")
 //     const [posts,setPosts]=useState([])
@@ -169,34 +174,45 @@ import {useEffect,useState} from "react"
 //         </div>
 //     )
 // }
-const tag = ['posts','albums','comments']
+
+
+
+// comment
+const lessons = [
+   {
+    id:1,
+    name: 'reactjs là gì, tại sao phải nên học reactjs'
+   },
+   {
+    id:2,
+    name: 'mpa/spa là gì'
+   },
+   {
+    id:3,
+    name: 'arrow function'
+   }
+]
+
 function Content(){
-    const [titles,setTitle]=useState([])
-    const [text,setText]=useState('')
-    const [but,setBut]=useState('posts')
+    const [lessonId,setLessonId]=useState(1)
     useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/${but}`)
-        .then(res=>{
-            return res.json()
-        })
-        .then(post=>{
-            return setTitle(post)
-        })
-    },[but])
+        const handleCommit=({detail})=>{
+
+        }
+        window.addEventListener(`lesson-${lessonId}`,handleCommit)
+        return ()=>{ window.removeEventListener(`lesson-${lessonId}`,handleCommit)}
+    },[lessonId])
     return(
         <div>
-            {tag.map(ta=>(
-                <button key={ta} onClick={()=>{setBut(ta)}} >{ta}</button>
-            ))}
-            <input  value={text} onChange={(e)=>{
-                setText(e.target.value)
-            }} />
             <ul>
-                {titles.map((title)=>(
-                    <li key={title.id}>{title.title}</li>
-                ))}
+                {
+                    lessons.map(lesson=>(
+                        <li key={lesson.id} style={{color:lessonId===lesson.id?'red':'#333'}} onClick={()=>setLessonId(lessonId)} >{lesson.name}</li>
+                    ))
+                }
             </ul>
         </div>
     )
 }
+
 export default Content
